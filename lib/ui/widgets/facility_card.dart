@@ -1,27 +1,35 @@
 import 'package:flutter/material.dart';
-
 import '../../shared/theme.dart';
 
 class FacilityCard extends StatelessWidget {
-  const FacilityCard(
-      {super.key, required this.title, required this.description, this.onTap});
+  const FacilityCard({
+    super.key,
+    required this.title,
+    required this.description,
+    this.onTap,
+    this.isSelected = false,
+    this.margin,
+  });
 
   final String title;
   final String description;
   final Function()? onTap;
+  final bool isSelected;
+  final EdgeInsetsGeometry? margin;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
+        margin: margin,
         width: double.infinity,
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
-          color: whiteColor,
+          color: isSelected ? lightBlueColor : whiteColor,
           border: Border.all(
-            color: lightBlueColor,
+            color: isSelected ? blueColor : lightBlueColor,
             style: BorderStyle.solid,
             width: 1,
           ),

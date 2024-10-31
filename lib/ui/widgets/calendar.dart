@@ -4,7 +4,7 @@ import 'package:table_calendar/table_calendar.dart';
 import '../../shared/theme.dart';
 
 class Calendar extends StatefulWidget {
-  final DateTime selected;
+  final DateTime? selected;
   final void Function(DateTime) onSelected;
 
   const Calendar({
@@ -19,13 +19,27 @@ class Calendar extends StatefulWidget {
 
 class CalendarState extends State<Calendar> {
   late DateTime _focusedDay = DateTime.now();
+  DateTime? _selectedDay;
 
   bool _isAvailableDay(DateTime day) {
-    return [DateTime.utc(2024, 10, 6), DateTime.utc(2024, 10, 7)].contains(day);
+    return [
+      DateTime.utc(2024, 10, 6),
+      DateTime.utc(2024, 10, 7),
+      DateTime.utc(2024, 10, 9),
+      DateTime.utc(2024, 10, 10),
+      DateTime.utc(2024, 10, 11)
+    ].contains(day);
   }
 
   bool _isFullDay(DateTime day) {
     return [DateTime.utc(2024, 10, 5), DateTime.utc(2024, 10, 8)].contains(day);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedDay = widget
+        .selected; // Initialize _selectedDay with the selected date from widget
   }
 
   @override
@@ -48,13 +62,14 @@ class CalendarState extends State<Calendar> {
             firstDay: firstDay,
             lastDay: lastDay,
             focusedDay: _focusedDay,
-            selectedDayPredicate: (day) => isSameDay(day, widget.selected),
+            selectedDayPredicate: (day) => isSameDay(day, _selectedDay),
             onDaySelected: (selectedDay, focusedDay) {
               if (_isAvailableDay(selectedDay)) {
-                widget.onSelected(selectedDay); // Call the onSelected callback
                 setState(() {
-                  _focusedDay = focusedDay; // Update the focused day
+                  _selectedDay = selectedDay;
+                  _focusedDay = focusedDay;
                 });
+                widget.onSelected(selectedDay); // Call the onSelected callback
               }
             },
             calendarFormat: CalendarFormat.month,
