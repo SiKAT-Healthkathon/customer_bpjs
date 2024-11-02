@@ -13,11 +13,12 @@ class ReservationService {
         'kota': reservation.kota,
         'rumah_sakit': reservation.rumahSakit,
         'poli': reservation.poli,
-        'dokter': reservation.dokter,
+        'dokter': "dr. Sa'da Barira, Sp.DVE",
         'keluhan': reservation.keluhan,
         'tanggal': reservation.tanggal
             ?.toIso8601String(), // Mengonversi DateTime ke String
         'nik': nik,
+        'status': 'Belum Datang'
       });
 
       return true;

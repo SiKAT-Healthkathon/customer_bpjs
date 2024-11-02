@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 // Colors
-const Color blueColor = Color(0xFF3D80C3);
+const Color blueColor = Color(0xFF3772FE);
 const Color lightBlueColor = Color(0xFFCFE1FF);
 const Color redColor = Color(0xFFBA0000);
 const Color lightRedColor = Color(0xFFFFC3C3);
