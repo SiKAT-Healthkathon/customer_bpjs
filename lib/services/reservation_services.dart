@@ -18,7 +18,7 @@ class ReservationService {
         'tanggal': reservation.tanggal
             ?.toIso8601String(), // Mengonversi DateTime ke String
         'nik': nik,
-        'status': 'Belum Datang'
+        'status': 'Terdaftar'
       });
 
       return true;
