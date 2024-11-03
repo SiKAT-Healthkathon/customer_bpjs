@@ -21,18 +21,22 @@ class CalendarState extends State<Calendar> {
   late DateTime _focusedDay = DateTime.now();
   DateTime? _selectedDay;
 
+  List<DateTime> full = [
+    DateTime.utc(2024, 10, 5),
+    DateTime.utc(2024, 10, 8),
+    DateTime.utc(2024, 11, 7),
+    DateTime.utc(2024, 11, 8),
+    DateTime.utc(2024, 11, 11),
+    DateTime.utc(2024, 11, 12),
+    DateTime.utc(2024, 11, 13),
+  ];
+
   bool _isAvailableDay(DateTime day) {
-    return [
-      DateTime.utc(2024, 10, 6),
-      DateTime.utc(2024, 10, 7),
-      DateTime.utc(2024, 10, 9),
-      DateTime.utc(2024, 10, 10),
-      DateTime.utc(2024, 10, 11)
-    ].contains(day);
+    return !full.contains(day);
   }
 
   bool _isFullDay(DateTime day) {
-    return [DateTime.utc(2024, 10, 5), DateTime.utc(2024, 10, 8)].contains(day);
+    return full.contains(day);
   }
 
   @override

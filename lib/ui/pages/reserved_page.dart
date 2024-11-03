@@ -43,6 +43,7 @@ class ReservedPage extends StatelessWidget {
       body: body(),
       bottomNavigationBar: CustomBottomNavigation(
         textSeccond: 'Beranda',
+        onPressedSeccond: () => Navigator.pushNamed(context, '/facility'),
         text: 'Tracking',
         onPressed: () => Navigator.pushNamed(context, '/tracking'),
       ),

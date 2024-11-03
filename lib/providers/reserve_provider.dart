@@ -12,6 +12,8 @@ class ReserveProvider extends ChangeNotifier {
     provinsi: null,
     rumahSakit: '',
     tanggal: null,
+    status: '',
+    checkInAt: null,
   );
 
   // String get errorMessage => _errorMessage;

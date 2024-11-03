@@ -8,7 +8,9 @@ class ReserveModel extends Equatable {
   final String? poli;
   final String dokter;
   final String keluhan;
+  final String? status;
   final DateTime? tanggal;
+  final DateTime? checkInAt;
 
   const ReserveModel({
     required this.layanan,
@@ -19,6 +21,8 @@ class ReserveModel extends Equatable {
     required this.dokter,
     required this.keluhan,
     required this.tanggal,
+    required this.status,
+    required this.checkInAt,
   });
 
   ReserveModel copyWith({
@@ -40,6 +44,27 @@ class ReserveModel extends Equatable {
       dokter: dokter ?? this.dokter,
       keluhan: keluhan ?? this.keluhan,
       tanggal: tanggal ?? this.tanggal,
+      status: status,
+      checkInAt: checkInAt,
+    );
+  }
+
+  factory ReserveModel.fromJson(Map<String, dynamic> json) {
+    return ReserveModel(
+      layanan: json['layanan'] as String,
+      provinsi: json['provinsi'] as String?,
+      kota: json['kota'] as String?,
+      rumahSakit: json['rumah_sakit'] as String,
+      poli: json['poli'] as String?,
+      dokter: json['dokter'] as String,
+      keluhan: json['keluhan'] as String,
+      tanggal: json['tanggal'] != null
+          ? DateTime.parse(json['tanggal'] as String)
+          : null,
+      status: json['status'] as String?,
+      checkInAt: json['check_in_at'] != null
+          ? DateTime.parse(json['check_in_at'] as String)
+          : null,
     );
   }
 
@@ -66,5 +91,7 @@ class ReserveModel extends Equatable {
         dokter,
         keluhan,
         tanggal,
+        status,
+        checkInAt
       ];
 }

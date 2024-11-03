@@ -68,7 +68,7 @@ class FacilityPage extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: whiteColor,
-      appBar: const CustomAppBar(progress: 1 / 5),
+      appBar: const CustomAppBar(progress: 1 / 5, isBack: false),
       body: body(),
       bottomNavigationBar: CustomBottomNavigation(
         onPressed: () => Navigator.pushNamed(context, '/location'),

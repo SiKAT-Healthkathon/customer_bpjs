@@ -8,12 +8,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.title,
     this.color = whiteColor,
     this.textColor = blackColor,
+    this.isBack = true,
   });
 
   final double? progress;
   final String? title;
   final Color? color;
   final Color? textColor;
+  final bool? isBack;
 
   @override
   Size get preferredSize => const Size.fromHeight(56);
@@ -50,13 +52,21 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ),
               ),
             ),
-      leading: IconButton(
-        onPressed: () => Navigator.pop(context),
-        icon: Icon(
-          Icons.arrow_back_ios,
-          color: textColor,
-        ),
-      ),
+      leading: isBack == true
+          ? IconButton(
+              onPressed: () => Navigator.pop(context),
+              icon: Icon(
+                Icons.arrow_back_ios,
+                color: textColor,
+              ),
+            )
+          : IconButton(
+              onPressed: () => Navigator.pushNamed(context, '/tracking'),
+              icon: Icon(
+                Icons.bookmark,
+                color: textColor,
+              ),
+            ),
     );
   }
 }
