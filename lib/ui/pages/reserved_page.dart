@@ -21,6 +21,7 @@ class ReservedPage extends StatelessWidget {
             Text(
               'Reservasi Berhasil Dibuat!',
               style: blackText.copyWith(fontSize: 20, fontWeight: semibold),
+              textAlign: TextAlign.center,
             ),
             const SizedBox(height: 8),
             Text(
