@@ -81,8 +81,9 @@ class LocationNotifier extends ChangeNotifier {
 
       // Tampilkan notifikasi jika waktu sekarang melewati ambang notifikasi
       if (now.isAfter(notificationThreshold) &&
-          now.difference(_lastNotificationTime!).inMinutes >=
-              minutesBeforeService) {
+          (now.difference(_lastNotificationTime!).inMinutes >=
+                  minutesBeforeService ||
+              _lastNotificationTime == null)) {
         await _showNotification();
       }
     }
