@@ -13,6 +13,7 @@ class LocationNotifier extends ChangeNotifier {
   final double targetLatitude = -7.94236147715521;
   final double targetLongitude = 110.31084771403597;
   Timer? _locationTimer;
+  DateTime? _lastNotificationTime;
 
   Future<void> init() async {
     flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
@@ -79,7 +80,9 @@ class LocationNotifier extends ChangeNotifier {
           serviceTime.subtract(Duration(minutes: minutesBeforeService));
 
       // Tampilkan notifikasi jika waktu sekarang melewati ambang notifikasi
-      if (now.isAfter(notificationThreshold)) {
+      if (now.isAfter(notificationThreshold) &&
+          now.difference(_lastNotificationTime!).inMinutes >=
+              minutesBeforeService) {
         await _showNotification();
       }
     }
